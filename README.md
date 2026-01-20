@@ -1,19 +1,44 @@
-# Scratch Detection on Text Images (Segmentation Approach)
-This is a Tool used to detect scratches on the numbers given by Mowito.ai
+# Surface Defect Segmentation & Classification
+An end-to-end Computer Vision pipeline designed to detect, localize, and classify surface scratches with pixel-level precision. This system utilizes a U-Net architecture with an EfficientNet-B0 backbone to solve the sparse-feature detection problem in industrial quality control.
 
-This repository contains the implementation of a segmentation-based system for detecting scratches on text images.  
-The model uses pixel-level binary masks for bad images and predicts scratch regions using a U-Net model with an EfficientNet encoder.  
-From the predicted mask, we derive image-level good/bad classification and bounding boxes for scratches.
+---
+# System Architecture
+
+The pipeline transforms raw sensor data into actionable defect metadata through three primary stages:
+
+Stochastic Augmentation: Handling environmental noise via Albumentations.
+
+Neural Inference: Pixel-wise probability mapping using Encoder-Decoder logic.
+
+Geometric Post-Processing: Converting masks into vectorized area metrics and Bounding Boxes.
 
 ---
 
-##  Key Features
-- **Segmentation model (U-Net + EfficientNet-B0)**
-- **Predicts binary scratch mask**
-- **Automatically generates bounding boxes**
-- **Image-level classification via mask area threshold**
-- **Supports custom threshold values**
-- **Training, validation, and inference scripts included**
-- **Robust augmentation pipeline (Albumentations)**
+# Key Features 
+Architectural Hybrid: Combines the localization power of U-Net with the feature-extraction efficiency of EfficientNet-B0.
+
+Vectorized Post-Processing: Automatically generates Bounding Boxes and calculates Defect Area Ratios using optimized OpenCV contours.
+
+Loss Function Engineering: Employs a BCE + Dice Loss hybrid to combat extreme class imbalance (small scratches vs. large backgrounds).
+
+Production-Ready Inference: Modular scripts support custom sensitivity thresholds and real-time visualization.
 
 ---
+
+# Installation & Usage
+1. Clone & Setup
+```
+git clone https://github.com/Uchihakamal1816/Scratch_Detector.git
+cd Scratch_Detector
+pip install -r requirements.txt
+```
+3. Training
+The training script utilizes an AdamW optimizer and a Cosine Annealing scheduler for stable convergence.
+```
+python train.py --epochs 50 --batch_size 16 --lr 1e-4
+```
+3. Inference
+Run inference on a single image or a directory to generate masks and area-based classification.
+```
+python infer.py --source ./test_images --threshold 0.5
+```
