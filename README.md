@@ -42,3 +42,8 @@ Run inference on a single image or a directory to generate masks and area-based 
 ```
 python infer.py --source ./test_images --threshold 0.5
 ```
+## Training Logs (20 Epochs)
+<img width="846" height="470" alt="image" src="https://github.com/user-attachments/assets/91470b9b-a007-4e69-ae74-7ab28d44c371" />
+
+## Best model: Epoch 18 with Val Dice = 0.1648
+
