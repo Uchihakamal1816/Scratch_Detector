@@ -47,3 +47,10 @@ python infer.py --source ./test_images --threshold 0.5
 
 ## Best model: Epoch 18 with Val Dice = 0.1648
 
+## Results
+
+| Main Image | Output Image |
+|-----------|--------------|
+| <img width="285" height="504" src="https://github.com/user-attachments/assets/be80040d-9fa5-4197-a5a3-eb15ccc197fa" /> | <img width="285" height="504" src="https://github.com/user-attachments/assets/300e5d2d-51af-4d24-ad6d-e4ac5e612114" /> |
+
+
